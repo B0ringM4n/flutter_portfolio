@@ -1,0 +1,61 @@
+part of '../home_screen.dart';
+
+class _Header extends StatelessWidget {
+  const _Header();
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.read<HomeController>();
+
+    return SafeArea(
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: AppTheme.paddingLarge,
+          left: AppTheme.paddingLarge,
+          right: AppTheme.paddingLarge,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ValueListenableBuilder(
+              valueListenable: c.animation,
+              builder: (context, animation, child) {
+                return Text(
+                  'México explora los mundos que viven en un solo país',
+                  style:
+                      Theme.of(
+                        context,
+                      ).textTheme.headlineSmall!.copyWith(
+                        fontSize: 26 - 4 * animation,
+                        fontWeight: FontWeight.bold,
+                      ),
+                  textAlign: TextAlign.start,
+                );
+              },
+            ),
+            const SizedBox(height: AppTheme.spaceSmall),
+            const Row(
+              children: [
+                Icon(
+                  Icons.filter_hdr,
+                  size: 26,
+                  color: Colors.red,
+                ),
+                SizedBox(width: AppTheme.spaceSmall),
+                Text(
+                  'Popular',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
