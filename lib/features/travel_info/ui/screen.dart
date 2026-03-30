@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portafolio/config/theme/app_theme.dart';
+import 'package:portafolio/features/travel_info/data/travel_item.dart';
 import 'package:portafolio/features/travel_info/ui/controller.dart';
 import 'package:provider/provider.dart';
 
@@ -45,15 +46,11 @@ class _TravelInfoScreenState extends State<TravelInfoScreen> {
             body: SingleChildScrollView(
               controller: _homeController.scrollController,
               physics: const ClampingScrollPhysics(),
-              child: const Column(
+              child: Column(
                 children: [
-                  _Header(),
-                  _ItemContainer(),
-                  _ItemContainer(),
-                  _ItemContainer(),
-                  _ItemContainer(),
-                  _ItemContainer(),
-                  SizedBox(height: AppTheme.paddingLarge),
+                  const _Header(),
+                  for (final item in travelItems) _ItemContainer(item: item),
+                  const SizedBox(height: AppTheme.paddingLarge),
                 ],
               ),
             ),

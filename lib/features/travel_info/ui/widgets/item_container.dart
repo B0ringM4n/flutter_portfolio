@@ -1,7 +1,9 @@
 part of '../screen.dart';
 
 class _ItemContainer extends StatefulWidget {
-  const _ItemContainer();
+  const _ItemContainer({required this.item});
+
+  final TravelItem item;
 
   @override
   State<_ItemContainer> createState() => _ItemContainerState();
@@ -48,11 +50,13 @@ class _ItemContainerState extends State<_ItemContainer>
       child: Stack(
         children: [
           _ItemSize(animation: _animation),
-          _Image(animation: _animation),
+          _Image(animation: _animation, item: widget.item),
           _SquareButton(animation: _animation),
           _Dots(animation: _animation),
           _Lines(animation: _animation),
+          _Phrase(animation: _animation, phrase: widget.item.phrase),
           _Icons(animation: _animation),
+          _Description(animation: _animation, description: widget.item.description),
         ],
       ),
     );
@@ -78,9 +82,10 @@ class _ItemSize extends StatelessWidget {
 }
 
 class _Image extends StatelessWidget {
-  const _Image({required this.animation});
+  const _Image({required this.animation, required this.item});
 
   final Animation<double> animation;
+  final TravelItem item;
 
   @override
   Widget build(BuildContext context) {
@@ -99,22 +104,17 @@ class _Image extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: AppTheme.paddingSmall,
             ),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.green,
               image: DecorationImage(
-                image: NetworkImage(
-                  'https://www.gob.mx/cms/uploads/image/file/520949/Hidalgo_Panoramica-de-Mineral-del-chico_web.jpg',
-                ),
+                image: NetworkImage(item.imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
             child: Transform.translate(
-              offset: Offset(
-                0 - 30 * value,
-                0,
-              ),
+              offset: Offset(0 - 30 * value, 0),
               child: Text(
-                'Bosques',
+                item.title,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   fontSize: 22 + 10 * value,
                   color: value < 0.5 ? Colors.white : Colors.black,
@@ -247,6 +247,34 @@ class _Lines extends StatelessWidget {
   }
 }
 
+class _Phrase extends StatelessWidget {
+  const _Phrase({required this.animation, required this.phrase});
+
+  final Animation<double> animation;
+  final String phrase;
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    return Positioned(
+      top: screenHeight * 0.63,
+      left: 74,
+      right: AppTheme.paddingLarge,
+      child: FadeTransition(
+        opacity: animation,
+        child: Text(
+          phrase,
+          style: const TextStyle(
+            fontSize: 13,
+            fontStyle: FontStyle.italic,
+            color: Colors.black54,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _Icons extends StatelessWidget {
   const _Icons({required this.animation});
 
@@ -286,6 +314,34 @@ class _Icons extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _Description extends StatelessWidget {
+  const _Description({required this.animation, required this.description});
+
+  final Animation<double> animation;
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    return Positioned(
+      top: screenHeight * 0.80,
+      left: 74,
+      right: AppTheme.paddingLarge,
+      child: FadeTransition(
+        opacity: animation,
+        child: Text(
+          description,
+          style: const TextStyle(
+            fontSize: 13,
+            height: 1.5,
+            color: Colors.black87,
+          ),
+        ),
+      ),
     );
   }
 }
