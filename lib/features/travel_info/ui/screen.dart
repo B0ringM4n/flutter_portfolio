@@ -10,6 +10,8 @@ part 'widgets/item_container.dart';
 class TravelInfoScreen extends StatefulWidget {
   const TravelInfoScreen({super.key});
 
+  static const routeName = 'animations/travel-info';
+
   @override
   State<TravelInfoScreen> createState() => _TravelInfoScreenState();
 }
@@ -43,6 +45,7 @@ class _TravelInfoScreenState extends State<TravelInfoScreen> {
             return false;
           },
           child: Scaffold(
+            appBar: AppBar(),
             body: SingleChildScrollView(
               controller: _homeController.scrollController,
               physics: const ClampingScrollPhysics(),
