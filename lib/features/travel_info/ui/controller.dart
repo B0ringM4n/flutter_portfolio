@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeController extends ChangeNotifier {
-  HomeController();
+class TravelInfoController extends ChangeNotifier {
+  TravelInfoController();
 
   late final AnimationController animationController;
   late final Animation<double> animation;

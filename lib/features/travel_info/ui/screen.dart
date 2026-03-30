@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:portafolio/config/theme/app_theme.dart';
+import 'package:portafolio/features/travel_info/ui/controller.dart';
 import 'package:provider/provider.dart';
-import 'home_controlle.dart';
-import '../../../config/theme/app_theme.dart';
 
-part 'widgets/item_container.dart';
 part 'widgets/header.dart';
+part 'widgets/item_container.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class TravelInfoScreen extends StatefulWidget {
+  const TravelInfoScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<TravelInfoScreen> createState() => _TravelInfoScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
+class _TravelInfoScreenState extends State<TravelInfoScreen>
     with SingleTickerProviderStateMixin {
-  final _homeController = HomeController();
+  final _homeController = TravelInfoController();
 
   @override
   void initState() {

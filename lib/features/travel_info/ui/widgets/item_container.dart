@@ -1,4 +1,4 @@
-part of '../home_screen.dart';
+part of '../screen.dart';
 
 class _ItemContainer extends StatelessWidget {
   const _ItemContainer();
@@ -23,7 +23,7 @@ class _ItemSize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<HomeController>();
+    final c = context.read<TravelInfoController>();
 
     return ValueListenableBuilder(
       valueListenable: c.animation,
@@ -41,7 +41,7 @@ class _Image extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<HomeController>();
+    final c = context.read<TravelInfoController>();
     final screenHeight = MediaQuery.of(context).size.height;
 
     return ValueListenableBuilder(
@@ -93,7 +93,7 @@ class _SquareButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<HomeController>();
+    final c = context.read<TravelInfoController>();
 
     return ValueListenableBuilder(
       valueListenable: c.animation,
@@ -156,7 +156,7 @@ class _Dots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<HomeController>();
+    final c = context.read<TravelInfoController>();
 
     return ValueListenableBuilder(
       valueListenable: c.animation,
@@ -193,7 +193,7 @@ class _Lines extends StatelessWidget {
       top: screenHeight * 0.58,
       left: 74,
       child: FadeTransition(
-        opacity: context.read<HomeController>().animation,
+        opacity: context.read<TravelInfoController>().animation,
         child: Container(
           width: 160,
           height: 2,
@@ -209,7 +209,7 @@ class _Icons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<HomeController>();
+    final c = context.read<TravelInfoController>();
     final screenHeight = MediaQuery.of(context).size.height;
 
     return ValueListenableBuilder(

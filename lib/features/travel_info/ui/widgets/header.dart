@@ -1,11 +1,11 @@
-part of '../home_screen.dart';
+part of '../screen.dart';
 
 class _Header extends StatelessWidget {
   const _Header();
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<HomeController>();
+    final c = context.read<TravelInfoController>();
 
     return SafeArea(
       bottom: false,
