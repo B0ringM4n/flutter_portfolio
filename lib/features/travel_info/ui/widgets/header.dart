@@ -5,8 +5,6 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.read<TravelInfoController>();
-
     return SafeArea(
       bottom: false,
       child: Padding(
@@ -18,18 +16,15 @@ class _Header extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ValueListenableBuilder(
-              valueListenable: c.animation,
-              builder: (context, animation, child) {
+            Selector<TravelInfoController, double>(
+              selector: (_, c) => c.baseScroll,
+              builder: (context, baseScroll, child) {
                 return Text(
                   'México explora los mundos que viven en un solo país',
-                  style:
-                      Theme.of(
-                        context,
-                      ).textTheme.headlineSmall!.copyWith(
-                        fontSize: 26 - 4 * animation,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    fontSize: 26 - 4 * baseScroll,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.start,
                 );
               },

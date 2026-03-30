@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class TravelInfoController extends ChangeNotifier {
   TravelInfoController();
 
-  late final AnimationController animationController;
-  late final Animation<double> animation;
   final scrollController = ScrollController();
 
   int? _selectedItem;
@@ -14,19 +12,6 @@ class TravelInfoController extends ChangeNotifier {
   int? get selectedItem => _selectedItem;
   double get totalScroll => _totalScroll;
   double get baseScroll => _baseScroll;
-
-  void init(TickerProvider vsync) {
-    animationController = AnimationController(
-      vsync: vsync,
-      duration: const Duration(milliseconds: 1000),
-    );
-    animation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: animationController,
-        curve: Curves.easeInOutCirc,
-      ),
-    );
-  }
 
   @override
   void dispose() {

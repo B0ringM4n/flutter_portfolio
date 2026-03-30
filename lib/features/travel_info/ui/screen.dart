@@ -13,28 +13,13 @@ class TravelInfoScreen extends StatefulWidget {
   State<TravelInfoScreen> createState() => _TravelInfoScreenState();
 }
 
-class _TravelInfoScreenState extends State<TravelInfoScreen>
-    with SingleTickerProviderStateMixin {
+class _TravelInfoScreenState extends State<TravelInfoScreen> {
   final _homeController = TravelInfoController();
-
-  @override
-  void initState() {
-    super.initState();
-    _homeController.init(this);
-  }
 
   @override
   void dispose() {
     _homeController.dispose();
     super.dispose();
-  }
-
-  Future<void> toggleAnimation() async {
-    if (_homeController.animationController.isCompleted) {
-      _homeController.animationController.reverse();
-    } else {
-      _homeController.animationController.forward();
-    }
   }
 
   @override
@@ -57,10 +42,6 @@ class _TravelInfoScreenState extends State<TravelInfoScreen>
             return false;
           },
           child: Scaffold(
-            floatingActionButton: FloatingActionButton(
-              onPressed: toggleAnimation,
-              child: const Icon(Icons.play_arrow),
-            ),
             body: SingleChildScrollView(
               controller: _homeController.scrollController,
               physics: const ClampingScrollPhysics(),
