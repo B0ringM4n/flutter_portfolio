@@ -65,7 +65,15 @@ class _TravelInfoScreenState extends State<TravelInfoScreen>
               controller: _homeController.scrollController,
               physics: const ClampingScrollPhysics(),
               child: const Column(
-                children: [_Header(), _ItemContainer(), _ItemContainer()],
+                children: [
+                  _Header(),
+                  _ItemContainer(),
+                  _ItemContainer(),
+                  _ItemContainer(),
+                  _ItemContainer(),
+                  _ItemContainer(),
+                  SizedBox(height: AppTheme.paddingLarge),
+                ],
               ),
             ),
           ),
